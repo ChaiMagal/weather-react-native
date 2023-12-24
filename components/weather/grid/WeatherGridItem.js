@@ -1,7 +1,7 @@
-import React, { useCallback, useMemo } from "react";
+import React, { useCallback } from "react";
 import { Surface, TouchableRipple } from "react-native-paper";
 import { ImageBackground, StyleSheet, View } from "react-native";
-import { accuWeatherImageIcon, DEVICE_WIDTH } from "../../../utils";
+import { DEVICE_WIDTH } from "../../../utils";
 import { useNavigation } from "@react-navigation/native";
 import { ROUTES } from "../../../utils/constants";
 import { useDispatch } from "react-redux";
@@ -11,11 +11,6 @@ import NameCountryTimeIcon from "./NameCountryTimeIcon";
 const WeatherGridItem = ({ item }) => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
-
-  const getIcon = useMemo(() => {
-    const iconNumber = item?.WeatherIcon;
-    return accuWeatherImageIcon(iconNumber);
-  }, [item?.WeatherIcon]);
 
   const handleWeatherPress = useCallback(() => {
     dispatch(setCurrent(item));
@@ -36,7 +31,6 @@ const WeatherGridItem = ({ item }) => {
               time={item?.LocalObservationDateTime}
               countryName={item?.Country?.EnglishName}
               cityName={item?.EnglishName}
-              icon={getIcon}
             />
           </ImageBackground>
         </TouchableRipple>
