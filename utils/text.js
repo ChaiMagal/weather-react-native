@@ -4,5 +4,6 @@ export const EN = {
   },
   settings: {
     title: "Settings",
+    themeSwitch: "Switch Theme",
   },
 };
