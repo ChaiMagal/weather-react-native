@@ -13,7 +13,7 @@
 
 ## App Structure
 ### Main stack
-- main page: weather squares with name, coutry, description, image, from OpenWheather API available cities, with search bar for filtering, and sort option by location or city
+- main page: weather squares with name, coutry, description, image, from AccuWather API top cities, with search bar for filtering, and sort option by location or city
 - info page: user can press on the squre, and will be moved to a info screen containing more info abour the city
 ### Settings Stack
 - main page: toggle light/dark theme, change units from CELSIUS/FAHRENHEIT
