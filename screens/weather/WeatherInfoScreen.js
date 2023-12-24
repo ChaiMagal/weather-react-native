@@ -54,21 +54,18 @@ const WeatherInfoScreen = () => {
             <View
               style={[styles.item, { backgroundColor: colors.partialOpacity }]}
             >
-              <Image source={{ uri: getIcon }} style={styles.iconImage} />
-              <View style={styles.temperature}>
-                <Text
-                  variant={"displayLarge"}
-                  style={[styles.text, styles.title]}
-                >
-                  {currentTemperature?.value}
-                </Text>
-                <Text variant={"headlineSmall"} style={styles.text}>
-                  {currentTemperature?.unit}
-                </Text>
+              <View style={styles.temperatureContainer}>
+                <Image source={{ uri: getIcon }} style={styles.iconImage} />
+                <View style={styles.temperature}>
+                  <Text variant={"displayLarge"} style={styles.title}>
+                    {currentTemperature?.value}
+                  </Text>
+                  <Text variant={"headlineSmall"}>
+                    {currentTemperature?.unit}
+                  </Text>
+                </View>
               </View>
-              <Text variant={"headlineLarge"} style={styles.text}>
-                {current?.WeatherText}
-              </Text>
+              <Text variant={"headlineLarge"}>{current?.WeatherText}</Text>
             </View>
           </View>
         </NameCountryTimeIcon>
@@ -92,6 +89,11 @@ const styles = StyleSheet.create({
   imageBackground: {
     width: "100%",
     height: "100%",
+  },
+  temperatureContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
   },
   temperature: {
     flexDirection: "row",
