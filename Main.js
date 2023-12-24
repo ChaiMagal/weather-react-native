@@ -27,7 +27,9 @@ const Main = () => {
   }, [theme]);
 
   const renderThemeStatusBar = useMemo(() => {
-    return theme === GENERAL.THEME.LIGHT ? darkTheme : lightTheme;
+    return theme === GENERAL.THEME.LIGHT
+      ? GENERAL.THEME.DARK
+      : GENERAL.THEME.LIGHT;
   }, [theme]);
 
   return (
