@@ -22,23 +22,20 @@ const darkTheme = {
 const Main = () => {
   const { theme } = useSelector((state) => state.local);
 
-  const renderTheme = useMemo(() => {
-    switch (theme) {
-      case GENERAL.THEME.LIGHT:
-        return lightTheme;
-      case GENERAL.THEME.DARK:
-        return darkTheme;
-      default:
-        return lightTheme;
-    }
+  const renderThemeApp = useMemo(() => {
+    return theme === GENERAL.THEME.LIGHT ? lightTheme : darkTheme;
+  }, [theme]);
+
+  const renderThemeStatusBar = useMemo(() => {
+    return theme === GENERAL.THEME.LIGHT ? darkTheme : lightTheme;
   }, [theme]);
 
   return (
     <>
-      <StatusBar style={theme} />
-      <PaperProvider theme={renderTheme}>
+      <StatusBar style={renderThemeStatusBar} />
+      <PaperProvider theme={renderThemeApp}>
         <IconComponentProvider IconComponent={MaterialCommunityIcons}>
-          <NavigationContainer theme={renderTheme}>
+          <NavigationContainer theme={renderThemeApp}>
             <MainTabNavigator />
           </NavigationContainer>
         </IconComponentProvider>

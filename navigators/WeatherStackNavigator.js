@@ -13,7 +13,7 @@ const WeatherStackNavigator = () => {
       <Stack.Screen
         name={ROUTES.WEATHER.MAIN}
         component={WeatherGridScreen}
-        options={{ headerTitle: EN.weather.title }}
+        options={{ headerShown: false }}
       />
       <Stack.Screen
         name={ROUTES.WEATHER.INFO}

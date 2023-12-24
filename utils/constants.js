@@ -1,4 +1,5 @@
 export const GENERAL = {
+  EMPTY_STRING: "",
   THEME: {
     LIGHT: "light",
     DARK: "dark",
@@ -7,6 +8,14 @@ export const GENERAL = {
     CELSIUS: "°C",
     FAHRENHEIT: "°F",
   },
+};
+
+export const STATUS = {
+  IDLE: "idle",
+  LOADING: "loading",
+  SUCCESS: "success",
+  FAIL: "fail",
+  CANCEL: "cancel",
 };
 
 export const ROUTES = {
