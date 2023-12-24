@@ -7,7 +7,7 @@ import { ICONS } from "../../utils/constants";
 // ref should be passed from the parent, so forwardRef(props,ref) is defined
 // propes passed are destructured
 const CustomBottomSheet = forwardRef(
-  ({ points = ["75%"], handleSheetChanges, children }, ref) => {
+  ({ points = ["85%"], handleSheetChanges, children }, ref) => {
     const { colors } = useTheme();
     const backgroundColor = useMemo(
       () => colors.background,
@@ -35,12 +35,11 @@ const CustomBottomSheet = forwardRef(
             shadowColor: color,
             shadowOffset: {
               width: 0,
-              height: 3,
+              height: 12,
             },
-            shadowOpacity: 0.27,
-            shadowRadius: 4.65,
-
-            elevation: 6,
+            shadowOpacity: 0.58,
+            shadowRadius: 16.0,
+            elevation: 24,
           }}
         >
           <View style={[styles.contentContainer, { backgroundColor, color }]}>

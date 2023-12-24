@@ -2,9 +2,9 @@ import React, { useCallback } from "react";
 import { Searchbar } from "react-native-paper";
 import { StyleSheet, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
-import { setSearch } from "../../redux/weather/weatherSlice";
-import { EN } from "../../utils/text";
-import FilterButton from "./filter/FilterButton";
+import { setSearch } from "../../../redux/weather/weatherSlice";
+import { EN } from "../../../utils/text";
+import FilterButton from "./FilterButton";
 
 const SearchAndFilterContainer = () => {
   const dispatch = useDispatch();
