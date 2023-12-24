@@ -4,7 +4,7 @@ import { StyleSheet, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { setSearch } from "../../redux/weather/weatherSlice";
 import { EN } from "../../utils/text";
-import FilterButton from "./FilterButton";
+import FilterButton from "./filter/FilterButton";
 
 const SearchAndFilterContainer = () => {
   const dispatch = useDispatch();

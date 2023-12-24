@@ -1,19 +1,13 @@
 import React from "react";
 import SearchAndFilterContainer from "../../components/weather/SearchAndFilterContainer";
-import { SafeAreaView, StyleSheet } from "react-native";
-import { StatusBar } from "expo-status-bar";
+import CustomSafeAreaView from "../../components/common/CustomSafeAreaView";
 
 const WeatherGridScreen = () => {
   return (
-    <SafeAreaView style={styles.safeAreaView}>
+    <CustomSafeAreaView>
       <SearchAndFilterContainer />
-    </SafeAreaView>
+    </CustomSafeAreaView>
   );
 };
-const styles = StyleSheet.create({
-  safeAreaView: {
-    paddingTop: StatusBar.currentHeight,
-  },
-});
 
 export default WeatherGridScreen;

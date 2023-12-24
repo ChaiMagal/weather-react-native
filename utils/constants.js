@@ -32,6 +32,8 @@ export const ROUTES = {
 
 export const ICONS = {
   THEME: "theme-light-dark",
+  FILTER: "tune",
+  CHEVRON: { DOWN: "chevron-down" },
   WEATHER: { FILLED: "weather-windy-variant", OUTLINE: "weather-cloudy" },
   COG: { FILLED: "cog", OUTLINE: "cog-outline" },
 };
