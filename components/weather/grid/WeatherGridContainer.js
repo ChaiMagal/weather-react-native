@@ -4,14 +4,16 @@ import { FlatList } from "react-native";
 import WeatherGridItem from "./WeatherGridItem";
 
 const WeatherGridContainer = () => {
-  const { weatherData } = useSelector((state) => state.weather);
+  const { searchData } = useSelector((state) => state.weather);
   return (
     <>
       <FlatList
-        data={weatherData}
+        data={searchData}
         renderItem={({ item }) => <WeatherGridItem item={item} />}
         keyExtractor={(item) => item?.Key}
         numColumns={2}
+        maxToRenderPerBatch={5}
+        extraData={searchData}
       />
     </>
   );

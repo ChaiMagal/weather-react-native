@@ -22,6 +22,7 @@ export const accuWatherTopCities = createAsyncThunk(
 
 const initialState = {
   search: GENERAL.EMPTY_STRING,
+  searchData: WEATHER_DUMMY_DATA,
   weatherData: WEATHER_DUMMY_DATA,
   current: GENERAL.EMPTY_STRING,
   status: {
@@ -36,6 +37,18 @@ export const localSlice = createSlice({
     //set search
     setSearch: (state, { payload }) => {
       state.search = payload;
+      state.searchData = state.weatherData.filter((item) => {
+        return (
+          item?.EnglishName?.toLowerCase()?.includes(payload?.toLowerCase()) ||
+          item?.Country?.EnglishName?.toLowerCase()?.includes(
+            payload?.toLowerCase()
+          )
+        );
+      });
+    },
+    //set current
+    setCurrent: (state, { payload }) => {
+      state.current = payload;
     },
   },
   extraReducers: (builder) => {
@@ -48,7 +61,7 @@ export const localSlice = createSlice({
       //accuWeather returning an array of objects of data without images
       //IMAGES_OF_CITIES was structured by taking image links from a free API called teleport - https://api.teleport.org/api/urban_areas/
       //In order to show an image for every city, we need to check witch cities have images and then return an array containing the new image URL
-      state.weatherData = payload?.data
+      const data = payload?.data
         ?.map((data) => {
           const findImage = IMAGES_OF_CITIES.find(
             (image) => image.name === data?.EnglishName
@@ -62,6 +75,10 @@ export const localSlice = createSlice({
           return null;
         })
         ?.filter((item) => item !== null);
+      //init data
+      state.weatherData = data;
+      //init search with entire data
+      state.searchData = data;
     });
     builder.addCase(accuWatherTopCities.rejected, (state) => {
       state.status.accuWatherTopCities = STATUS.FAIL;
@@ -69,6 +86,6 @@ export const localSlice = createSlice({
   },
 });
 
-export const { setSearch } = localSlice.actions;
+export const { setSearch, setCurrent } = localSlice.actions;
 
 export default localSlice.reducer;
