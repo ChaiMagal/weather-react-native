@@ -44,7 +44,6 @@ export const themeColors = {
     text: "rgb(32, 26, 26)",
     border: "rgb(216, 216, 216)",
     notification: "rgb(255, 59, 48)",
-    partialOpacity: "rgba(207,229,255,0.75)",
   },
   darkTheme: {
     primary: "rgb(153, 203, 255)",
@@ -91,6 +90,5 @@ export const themeColors = {
     text: "rgb(236, 224, 223)",
     border: "rgb(39, 39, 41)",
     notification: "rgb(255, 69, 58)",
-    partialOpacity: "rgba(0,74,120,0.75)",
   },
 };

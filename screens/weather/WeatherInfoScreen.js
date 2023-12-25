@@ -6,10 +6,9 @@ import { useNavigation } from "@react-navigation/native";
 import { Image, ImageBackground, StyleSheet, View } from "react-native";
 import NameCountryTimeIcon from "../../components/weather/grid/NameCountryTimeIcon";
 import { accuWeatherImageIcon } from "../../utils";
-import { Text, useTheme } from "react-native-paper";
+import { Text } from "react-native-paper";
 
 const WeatherInfoScreen = () => {
-  const { colors } = useTheme();
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const { current } = useSelector((state) => state.weather);
@@ -51,21 +50,21 @@ const WeatherInfoScreen = () => {
           icon={getIcon}
         >
           <View style={styles.itemContainer}>
-            <View
-              style={[styles.item, { backgroundColor: colors.partialOpacity }]}
-            >
+            <View style={styles.item}>
               <View style={styles.temperatureContainer}>
                 <Image source={{ uri: getIcon }} style={styles.iconImage} />
                 <View style={styles.temperature}>
                   <Text variant={"displayLarge"} style={styles.title}>
                     {currentTemperature?.value}
                   </Text>
-                  <Text variant={"headlineSmall"}>
+                  <Text variant={"headlineSmall"} style={styles.title}>
                     {currentTemperature?.unit}
                   </Text>
                 </View>
               </View>
-              <Text variant={"headlineLarge"}>{current?.WeatherText}</Text>
+              <Text variant={"headlineLarge"} style={styles.title}>
+                {current?.WeatherText}
+              </Text>
             </View>
           </View>
         </NameCountryTimeIcon>
@@ -102,6 +101,10 @@ const styles = StyleSheet.create({
   },
   title: {
     fontWeight: "bold",
+    color: "white",
+    textShadowColor: "black",
+    textShadowOffset: { width: 0, height: 0 },
+    textShadowRadius: 5,
   },
   iconImage: {
     width: 100,
