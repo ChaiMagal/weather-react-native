@@ -28,7 +28,7 @@ const NameCountryTime = ({
       <View style={styles.innerContainer}>
         <View style={styles.item} />
         <View style={styles.textContainer}>
-          <Text variant={timeVariant} style={styles.text}>
+          <Text variant={timeVariant} style={[styles.text, styles.title]}>
             {convertISOToDayDateTime(time)}
           </Text>
         </View>
@@ -54,8 +54,8 @@ const styles = StyleSheet.create({
   },
   text: {
     textAlign: "center",
-    color: "white",
-    textShadowColor: "black",
+    color: "rgb(252, 252, 255)",
+    textShadowColor: "rgb(26, 28, 30)",
     textShadowOffset: { width: 0, height: 0 },
     textShadowRadius: 5,
   },

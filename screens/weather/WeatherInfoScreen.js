@@ -103,8 +103,8 @@ const styles = StyleSheet.create({
   },
   title: {
     fontWeight: "bold",
-    color: "white",
-    textShadowColor: "black",
+    color: "rgb(252, 252, 255)",
+    textShadowColor: "rgb(26, 28, 30)",
     textShadowOffset: { width: 0, height: 0 },
     textShadowRadius: 5,
   },
@@ -112,6 +112,7 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     margin: 16,
+    borderRadius: 100,
   },
 });
 

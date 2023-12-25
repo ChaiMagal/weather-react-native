@@ -4,7 +4,7 @@ export const EN = {
     search: "Search",
     sort: {
       title: "Sort By:",
-      alphabitically: "Sort Alphabetically",
+      alphabitically: "Alphabetically",
       distance: "Distance to City:",
       apply: "Apply Sort",
     },
