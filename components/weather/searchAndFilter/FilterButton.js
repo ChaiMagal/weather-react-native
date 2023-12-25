@@ -5,29 +5,29 @@ import { ICONS } from "../../../utils/constants";
 import CustomBottomSheet from "../../common/CustomBottomSheet";
 
 const FilterButton = () => {
-  const [index, setIndex] = useState(-1);
   //BottomSheet
   // ref
   const bottomSheetRef = useRef(null);
+  const [show, setShow] = useState(false);
   const toggleBottomSheet = useCallback(() => {
-    index >= 0
-      ? bottomSheetRef.current?.close()
-      : bottomSheetRef.current?.expand();
-  }, [index]);
+    setShow(true);
+  }, []);
   // callbacks
   const handleSheetChanges = useCallback((index) => {
-    setIndex(index);
+    if (index < 0) setShow(false);
   }, []);
 
   return (
     <>
       <IconButton icon={ICONS.FILTER} onPress={toggleBottomSheet} />
-      <CustomBottomSheet
-        ref={bottomSheetRef}
-        handleSheetChanges={handleSheetChanges}
-      >
-        <FilterContent />
-      </CustomBottomSheet>
+      {show && (
+        <CustomBottomSheet
+          ref={bottomSheetRef}
+          handleSheetChanges={handleSheetChanges}
+        >
+          <FilterContent />
+        </CustomBottomSheet>
+      )}
     </>
   );
 };

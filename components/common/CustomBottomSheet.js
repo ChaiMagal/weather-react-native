@@ -18,40 +18,45 @@ const CustomBottomSheet = forwardRef(
     const snapPoints = useMemo(() => points, [points]);
     return (
       <Portal>
-        <BottomSheet
-          ref={ref}
-          snapPoints={snapPoints}
-          enablePanDownToClose={true}
-          index={-1}
-          onChange={handleSheetChanges}
-          style={{ color }}
-          handleComponent={() => (
-            <View style={styles.handle}>
-              <IconButton icon={ICONS.CHEVRON.DOWN} />
+        <View style={[styles.backdrop, { backgroundColor: colors.backdrop }]}>
+          <BottomSheet
+            ref={ref}
+            snapPoints={snapPoints}
+            enablePanDownToClose={true}
+            index={0}
+            onChange={handleSheetChanges}
+            style={{ color }}
+            handleComponent={() => (
+              <View style={styles.handle}>
+                <IconButton icon={ICONS.CHEVRON.DOWN} />
+              </View>
+            )}
+            backgroundStyle={{
+              backgroundColor,
+              shadowColor: color,
+              shadowOffset: {
+                width: 0,
+                height: 12,
+              },
+              shadowOpacity: 0.58,
+              shadowRadius: 16.0,
+              elevation: 24,
+            }}
+          >
+            <View style={[styles.contentContainer, { backgroundColor, color }]}>
+              {children}
             </View>
-          )}
-          backgroundStyle={{
-            backgroundColor,
-            shadowColor: color,
-            shadowOffset: {
-              width: 0,
-              height: 12,
-            },
-            shadowOpacity: 0.58,
-            shadowRadius: 16.0,
-            elevation: 24,
-          }}
-        >
-          <View style={[styles.contentContainer, { backgroundColor, color }]}>
-            {children}
-          </View>
-        </BottomSheet>
+          </BottomSheet>
+        </View>
       </Portal>
     );
   }
 );
 
 const styles = StyleSheet.create({
+  backdrop: {
+    flex: 1,
+  },
   contentContainer: {
     flex: 1,
     justifyContent: "center",
