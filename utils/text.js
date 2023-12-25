@@ -4,6 +4,7 @@ export const EN = {
     search: "Search",
     sort: {
       alphabitically: "Sort Alphabetically",
+      distance: "Distance to City:",
       apply: "Apply Sort",
     },
   },

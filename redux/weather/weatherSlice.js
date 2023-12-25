@@ -1,7 +1,12 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { ACCU_WEATHER_API, GENERAL, STATUS } from "../../utils/constants";
 import axios from "axios";
-import { getAccuWeatherRandomApiKey } from "../../utils";
+import {
+  getAccuWeatherRandomApiKey,
+  sortAtoZ,
+  sortLocations,
+  sortZtoA,
+} from "../../utils";
 import { IMAGES_OF_CITIES, WEATHER_DUMMY_DATA } from "../../utils/dummyData";
 
 //@GET - http://dataservice.accuweather.com/currentconditions/v1/topcities/150?apikey=
@@ -26,6 +31,7 @@ const initialState = {
   weatherData: WEATHER_DUMMY_DATA,
   current: GENERAL.EMPTY_STRING,
   sortAlphabetically: GENERAL.EMPTY_STRING,
+  sortDistance: GENERAL.EMPTY_STRING,
   status: {
     accuWatherTopCities: GENERAL.EMPTY_STRING,
   },
@@ -38,6 +44,7 @@ export const localSlice = createSlice({
     //set search
     setSearch: (state, { payload }) => {
       state.search = payload;
+      state.sortAlphabetically = GENERAL.EMPTY_STRING;
       state.searchData = state.weatherData.filter((item) => {
         return (
           item?.EnglishName?.toLowerCase()?.includes(payload?.toLowerCase()) ||
@@ -51,37 +58,27 @@ export const localSlice = createSlice({
     setCurrent: (state, { payload }) => {
       state.current = payload;
     },
-    //set current
+    //set sort alphabetically
     setSortAlphabetically: (state, { payload }) => {
       // Sort A to Z
       if (payload === GENERAL.SORT.AZ) {
-        state.searchData = state.searchData?.sort((a, b) => {
-          let nameA = a?.EnglishName?.toLowerCase();
-          let nameB = b?.EnglishName?.toLowerCase();
-          if (nameA < nameB) {
-            return -1;
-          }
-          if (nameA > nameB) {
-            return 1;
-          }
-          return 0;
-        });
+        state.searchData = sortAtoZ(state.searchData);
+        state.weatherData = sortAtoZ(state.weatherData);
       }
       // Sort A to Z
       if (payload === GENERAL.SORT.ZA) {
-        state.searchData = state.searchData?.sort((a, b) => {
-          let nameA = a?.EnglishName?.toLowerCase();
-          let nameB = b?.EnglishName?.toLowerCase();
-          if (nameA > nameB) {
-            return -1;
-          }
-          if (nameA < nameB) {
-            return 1;
-          }
-          return 0;
-        });
+        state.searchData = sortZtoA(state.searchData);
+        state.weatherData = sortZtoA(state.weatherData);
       }
       state.sortAlphabetically = payload;
+      state.sortDistance = GENERAL.EMPTY_STRING;
+    },
+    //set by distance
+    setSortDistance: (state, { payload }) => {
+      state.weatherData = sortLocations(state.weatherData, payload);
+      state.searchData = sortLocations(state.searchData, payload);
+      state.sortDistance = payload;
+      state.sortAlphabetically = GENERAL.EMPTY_STRING;
     },
   },
   extraReducers: (builder) => {
@@ -109,9 +106,10 @@ export const localSlice = createSlice({
         })
         ?.filter((item) => item !== null);
       //init data
-      state.weatherData = data;
+      state.weatherData = sortAtoZ(data);
       //init search with entire data
-      state.searchData = data;
+      state.searchData = sortAtoZ(data);
+      state.sortAlphabetically = GENERAL.SORT.AZ;
     });
     builder.addCase(accuWatherTopCities.rejected, (state) => {
       state.status.accuWatherTopCities = STATUS.FAIL;
@@ -119,7 +117,7 @@ export const localSlice = createSlice({
   },
 });
 
-export const { setSearch, setCurrent, setSortAlphabetically } =
+export const { setSearch, setCurrent, setSortAlphabetically, setSortDistance } =
   localSlice.actions;
 
 export default localSlice.reducer;
