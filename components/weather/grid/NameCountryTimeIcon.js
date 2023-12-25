@@ -3,15 +3,23 @@ import { StyleSheet, View } from "react-native";
 import { Text } from "react-native-paper";
 import { convertISOToDayDateTime } from "../../../utils";
 
-const NameCountryTimeIcon = ({ children, cityName, countryName, time }) => {
+const NameCountryTimeIcon = ({
+  children,
+  cityName,
+  countryName,
+  time,
+  cityNameVariant = "headlineMedium",
+  countryNameVariant = "titleMedium",
+  timeVariant = "titleSmall",
+}) => {
   return (
     <View style={styles.container}>
       <View style={styles.innerContainer}>
         <View style={styles.textContainer}>
-          <Text variant={"displaySmall"} style={[styles.text, styles.title]}>
+          <Text variant={cityNameVariant} style={[styles.text, styles.title]}>
             {cityName}
           </Text>
-          <Text variant={"headlineSmall"} style={[styles.text]}>
+          <Text variant={countryNameVariant} style={[styles.text]}>
             {countryName}
           </Text>
         </View>
@@ -20,7 +28,7 @@ const NameCountryTimeIcon = ({ children, cityName, countryName, time }) => {
       <View style={styles.innerContainer}>
         <View style={styles.item} />
         <View style={styles.textContainer}>
-          <Text variant={"titleSmall"} style={styles.text}>
+          <Text variant={timeVariant} style={styles.text}>
             {convertISOToDayDateTime(time)}
           </Text>
         </View>

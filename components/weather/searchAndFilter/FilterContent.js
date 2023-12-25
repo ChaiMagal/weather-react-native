@@ -3,50 +3,53 @@ import { Button, Chip, Text } from "react-native-paper";
 import { GENERAL } from "../../../utils/constants";
 import { StyleSheet, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
-import { setSort } from "../../../redux/weather/weatherSlice";
+import { setSortAlphabetically } from "../../../redux/weather/weatherSlice";
+import { EN } from "../../../utils/text";
 
 const FilterContent = ({ handleSort }) => {
   const dispatch = useDispatch();
 
-  const {
-    sort: { byName, distanceTo },
-  } = useSelector((state) => state.weather);
+  const { sortAlphabetically } = useSelector((state) => state.weather);
 
-  const [alphabetic, setAlphabetic] = useState(byName);
+  const [alphabetic, setAlphabetic] = useState(sortAlphabetically);
 
   //sort by name
   //sort by distance to a location
   const handlePress = useCallback(() => {
-    dispatch(setSort({ byName: alphabetic, distanceTo }));
+    dispatch(setSortAlphabetically(alphabetic));
     handleSort();
-  }, [alphabetic, dispatch, distanceTo, handleSort]);
+  }, [alphabetic, dispatch, handleSort]);
 
-  const handleSOrtName = useCallback((name) => {
-    setAlphabetic(name);
+  const handleSortAlphabetically = useCallback((alp) => {
+    setAlphabetic(alp);
   }, []);
 
   const renderApplyButton = useMemo(() => {
-    if (alphabetic !== byName) {
-      return <Button onPress={handlePress}>Apply Sort</Button>;
+    if (alphabetic !== sortAlphabetically) {
+      return <Button onPress={handlePress}>{EN.weather.sort.apply}</Button>;
     }
     return <></>;
-  }, [alphabetic, byName, handlePress]);
+  }, [alphabetic, handlePress, sortAlphabetically]);
 
   return (
     <>
       <View style={styles.container}>
-        <Text variant={"labelSmall"}>Sort Alphabetically</Text>
+        <Text variant={"labelSmall"}>{EN.weather.sort.alphabitically}</Text>
         <View style={styles.sortName}>
-          {GENERAL.SORT.ARRAY.map((name) => (
-            <Chip
-              key={name}
-              style={styles.chip}
-              onPress={() => handleSOrtName(name)}
-              mode={alphabetic === name ? "flat" : "outlined"}
-            >
-              {name}
-            </Chip>
-          ))}
+          <Chip
+            style={styles.chip}
+            onPress={() => handleSortAlphabetically(GENERAL.SORT.AZ)}
+            mode={alphabetic === GENERAL.SORT.AZ ? "flat" : "outlined"}
+          >
+            {GENERAL.SORT.AZ}
+          </Chip>
+          <Chip
+            style={styles.chip}
+            onPress={() => handleSortAlphabetically(GENERAL.SORT.ZA)}
+            mode={alphabetic === GENERAL.SORT.ZA ? "flat" : "outlined"}
+          >
+            {GENERAL.SORT.ZA}
+          </Chip>
         </View>
       </View>
       {renderApplyButton}

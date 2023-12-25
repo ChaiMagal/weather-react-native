@@ -48,6 +48,9 @@ const WeatherInfoScreen = () => {
           countryName={current?.Country?.EnglishName}
           cityName={current?.EnglishName}
           icon={getIcon}
+          cityNameVariant={"displayLarge"}
+          countryNameVariant={"headlineLarge"}
+          timeVariant={"titleLarge"}
         >
           <View style={styles.itemContainer}>
             <View style={styles.item}>
