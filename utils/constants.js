@@ -8,6 +8,11 @@ export const GENERAL = {
     CELSIUS: "°C",
     FAHRENHEIT: "°F",
   },
+  SORT: {
+    AZ: "A to Z",
+    ZA: "Z to A",
+    ARRAY: ["A to Z", "Z to A"],
+  },
 };
 
 export const STATUS = {

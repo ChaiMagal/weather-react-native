@@ -16,6 +16,9 @@ const FilterButton = () => {
   const handleSheetChanges = useCallback((index) => {
     if (index < 0) setShow(false);
   }, []);
+  const handleSort = useCallback(() => {
+    bottomSheetRef.current?.close();
+  }, []);
 
   return (
     <>
@@ -25,7 +28,7 @@ const FilterButton = () => {
           ref={bottomSheetRef}
           handleSheetChanges={handleSheetChanges}
         >
-          <FilterContent />
+          <FilterContent handleSort={handleSort} />
         </CustomBottomSheet>
       )}
     </>

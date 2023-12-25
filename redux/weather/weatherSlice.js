@@ -25,6 +25,10 @@ const initialState = {
   searchData: WEATHER_DUMMY_DATA,
   weatherData: WEATHER_DUMMY_DATA,
   current: GENERAL.EMPTY_STRING,
+  sort: {
+    byName: GENERAL.EMPTY_STRING,
+    distanceTo: GENERAL.EMPTY_STRING,
+  },
   status: {
     accuWatherTopCities: GENERAL.EMPTY_STRING,
   },
@@ -49,6 +53,39 @@ export const localSlice = createSlice({
     //set current
     setCurrent: (state, { payload }) => {
       state.current = payload;
+    },
+    //set current
+    setSort: (state, { payload }) => {
+      const { byName } = payload;
+      // Sort A to Z
+      if (byName === GENERAL.SORT.AZ) {
+        state.searchData = state.searchData?.sort((a, b) => {
+          let nameA = a?.EnglishName?.toLowerCase();
+          let nameB = b?.EnglishName?.toLowerCase();
+          if (nameA < nameB) {
+            return -1;
+          }
+          if (nameA > nameB) {
+            return 1;
+          }
+          return 0;
+        });
+      }
+      // Sort A to Z
+      if (byName === GENERAL.SORT.ZA) {
+        state.searchData = state.searchData?.sort((a, b) => {
+          let nameA = a?.EnglishName?.toLowerCase();
+          let nameB = b?.EnglishName?.toLowerCase();
+          if (nameA > nameB) {
+            return -1;
+          }
+          if (nameA < nameB) {
+            return 1;
+          }
+          return 0;
+        });
+      }
+      state.sort = { ...payload };
     },
   },
   extraReducers: (builder) => {
@@ -86,6 +123,6 @@ export const localSlice = createSlice({
   },
 });
 
-export const { setSearch, setCurrent } = localSlice.actions;
+export const { setSearch, setCurrent, setSort } = localSlice.actions;
 
 export default localSlice.reducer;

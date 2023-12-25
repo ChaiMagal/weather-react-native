@@ -1,5 +1,5 @@
 import React, { forwardRef, useMemo } from "react";
-import BottomSheet from "@gorhom/bottom-sheet";
+import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
 import { StyleSheet, View } from "react-native";
 import { IconButton, Portal, useTheme } from "react-native-paper";
 import { ICONS } from "../../utils/constants";
@@ -7,7 +7,7 @@ import { ICONS } from "../../utils/constants";
 // ref should be passed from the parent, so forwardRef(props,ref) is defined
 // propes passed are destructured
 const CustomBottomSheet = forwardRef(
-  ({ points = ["85%"], handleSheetChanges, children }, ref) => {
+  ({ points = ["50%"], handleSheetChanges, children }, ref) => {
     const { colors } = useTheme();
     const backgroundColor = useMemo(
       () => colors.background,
@@ -43,9 +43,9 @@ const CustomBottomSheet = forwardRef(
               elevation: 24,
             }}
           >
-            <View style={[styles.contentContainer, { backgroundColor, color }]}>
+            <BottomSheetView style={{ backgroundColor, color }}>
               {children}
-            </View>
+            </BottomSheetView>
           </BottomSheet>
         </View>
       </Portal>
