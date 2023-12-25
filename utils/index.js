@@ -90,7 +90,9 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
 }
 
 export function sortLocations(locations, selectedEnglishName) {
-  // Find the selected location
+  //calculateDistance is a function that calculates the distance between two latitude/longitude pairs using the Haversine formula.
+  //sortLocations is the main function that sorts the array. It finds the selected location based on EnglishName, then sorts the rest of the locations by their distance to this selected location.
+  // // Find the selected location
   const selectedLocation = locations.find(
     (loc) => loc.EnglishName === selectedEnglishName
   );

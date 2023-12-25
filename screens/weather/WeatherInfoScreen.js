@@ -4,7 +4,7 @@ import { setCurrent } from "../../redux/weather/weatherSlice";
 import { GENERAL } from "../../utils/constants";
 import { useNavigation } from "@react-navigation/native";
 import { Image, ImageBackground, StyleSheet, View } from "react-native";
-import NameCountryTimeIcon from "../../components/weather/grid/NameCountryTimeIcon";
+import NameCountryTime from "../../components/weather/grid/NameCountryTime";
 import { accuWeatherImageIcon } from "../../utils";
 import { Text } from "react-native-paper";
 
@@ -43,7 +43,7 @@ const WeatherInfoScreen = () => {
         source={{ uri: current?.image }}
         style={styles.imageBackground}
       >
-        <NameCountryTimeIcon
+        <NameCountryTime
           time={current?.LocalObservationDateTime}
           countryName={current?.Country?.EnglishName}
           cityName={current?.EnglishName}
@@ -70,7 +70,7 @@ const WeatherInfoScreen = () => {
               </Text>
             </View>
           </View>
-        </NameCountryTimeIcon>
+        </NameCountryTime>
       </ImageBackground>
     </View>
   );
@@ -79,7 +79,6 @@ const WeatherInfoScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 16,
   },
   itemContainer: { flex: 1, justifyContent: "center", alignItems: "center" },
   item: {
@@ -112,6 +111,7 @@ const styles = StyleSheet.create({
   iconImage: {
     width: 100,
     height: 100,
+    margin: 16,
   },
 });
 

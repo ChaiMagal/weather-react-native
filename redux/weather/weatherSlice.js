@@ -7,7 +7,7 @@ import {
   sortLocations,
   sortZtoA,
 } from "../../utils";
-import { IMAGES_OF_CITIES, WEATHER_DUMMY_DATA } from "../../utils/dummyData";
+import { IMAGES_OF_CITIES } from "../../utils/dummyData";
 
 //@GET - http://dataservice.accuweather.com/currentconditions/v1/topcities/150?apikey=
 export const accuWatherTopCities = createAsyncThunk(
@@ -27,8 +27,8 @@ export const accuWatherTopCities = createAsyncThunk(
 
 const initialState = {
   search: GENERAL.EMPTY_STRING,
-  searchData: WEATHER_DUMMY_DATA,
-  weatherData: WEATHER_DUMMY_DATA,
+  searchData: GENERAL.EMPTY_STRING,
+  weatherData: GENERAL.EMPTY_STRING,
   current: GENERAL.EMPTY_STRING,
   sortAlphabetically: GENERAL.EMPTY_STRING,
   sortDistance: GENERAL.EMPTY_STRING,

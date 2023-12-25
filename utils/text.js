@@ -3,6 +3,7 @@ export const EN = {
     title: "Weather",
     search: "Search",
     sort: {
+      title: "Sort By:",
       alphabitically: "Sort Alphabetically",
       distance: "Distance to City:",
       apply: "Apply Sort",
@@ -10,7 +11,7 @@ export const EN = {
   },
   settings: {
     title: "Settings",
-    themeSwitch: "Switch Theme",
+    themeSwitch: "Dark Mode",
     temperature: "Temperature",
   },
 };

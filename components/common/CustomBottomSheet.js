@@ -7,7 +7,7 @@ import { ICONS } from "../../utils/constants";
 // ref should be passed from the parent, so forwardRef(props,ref) is defined
 // propes passed are destructured
 const CustomBottomSheet = forwardRef(
-  ({ points = ["50%"], handleSheetChanges, children }, ref) => {
+  ({ points = ["75%"], handleSheetChanges, children }, ref) => {
     const { colors } = useTheme();
     const backgroundColor = useMemo(
       () => colors.background,

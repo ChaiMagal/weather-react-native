@@ -3,7 +3,7 @@ import { StyleSheet, View } from "react-native";
 import { Text } from "react-native-paper";
 import { convertISOToDayDateTime } from "../../../utils";
 
-const NameCountryTimeIcon = ({
+const NameCountryTime = ({
   children,
   cityName,
   countryName,
@@ -48,7 +48,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   textContainer: {
-    padding: 8,
+    paddingHorizontal: 8,
+    paddingVertical: 16,
     width: "100%",
   },
   text: {
@@ -60,4 +61,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default NameCountryTimeIcon;
+export default NameCountryTime;

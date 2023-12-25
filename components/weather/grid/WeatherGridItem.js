@@ -6,7 +6,7 @@ import { useNavigation } from "@react-navigation/native";
 import { ROUTES } from "../../../utils/constants";
 import { useDispatch } from "react-redux";
 import { setCurrent } from "../../../redux/weather/weatherSlice";
-import NameCountryTimeIcon from "./NameCountryTimeIcon";
+import NameCountryTime from "./NameCountryTime";
 
 const WeatherGridItem = ({ item }) => {
   const dispatch = useDispatch();
@@ -27,7 +27,7 @@ const WeatherGridItem = ({ item }) => {
             }}
             style={styles.imageBackground}
           >
-            <NameCountryTimeIcon
+            <NameCountryTime
               time={item?.LocalObservationDateTime}
               countryName={item?.Country?.EnglishName}
               cityName={item?.EnglishName}

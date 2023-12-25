@@ -8,6 +8,7 @@ import {
   setSortDistance,
 } from "../../../redux/weather/weatherSlice";
 import { EN } from "../../../utils/text";
+import { DEVICE_WIDTH } from "../../../utils";
 
 const FilterContent = ({ handleSort }) => {
   const dispatch = useDispatch();
@@ -40,7 +41,11 @@ const FilterContent = ({ handleSort }) => {
 
   const renderApplyButton = useMemo(() => {
     if (alphabetic !== sortAlphabetically || distance !== sortDistance) {
-      return <Button onPress={handlePress}>{EN.weather.sort.apply}</Button>;
+      return (
+        <Button mode={"contained"} onPress={handlePress}>
+          {EN.weather.sort.apply}
+        </Button>
+      );
     }
     return <></>;
   }, [alphabetic, distance, handlePress, sortAlphabetically, sortDistance]);
@@ -48,6 +53,11 @@ const FilterContent = ({ handleSort }) => {
   return (
     <>
       <View style={styles.container}>
+        {renderApplyButton}
+        <Text variant={"titleLarge"} style={styles.title}>
+          {EN.weather.sort.title}
+        </Text>
+
         <Text variant={"labelSmall"}>{EN.weather.sort.alphabitically}</Text>
         <View style={styles.sortName}>
           <Chip
@@ -68,7 +78,7 @@ const FilterContent = ({ handleSort }) => {
         <View>
           <Text variant={"labelSmall"}>{EN.weather.sort.distance}</Text>
           <ScrollView
-            style={{ maxHeight: 150 }}
+            style={styles.scrollContainer}
             contentContainerStyle={styles.scroll}
           >
             {searchData?.map((obj) => {
@@ -87,7 +97,6 @@ const FilterContent = ({ handleSort }) => {
           </ScrollView>
         </View>
       </View>
-      {renderApplyButton}
     </>
   );
 };
@@ -105,8 +114,14 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     flexWrap: "wrap",
   },
+  scrollContainer: {
+    height: +DEVICE_WIDTH,
+  },
   chip: {
     margin: 2,
+  },
+  title: {
+    paddingVertical: 8,
   },
 });
 

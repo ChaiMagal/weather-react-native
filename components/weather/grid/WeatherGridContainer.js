@@ -12,7 +12,6 @@ const WeatherGridContainer = () => {
         renderItem={({ item }) => <WeatherGridItem item={item} />}
         keyExtractor={(item) => item?.Key}
         numColumns={2}
-        maxToRenderPerBatch={5}
         extraData={searchData}
       />
     </>
