@@ -5,10 +5,10 @@ Repository: [https://github.com/ChaiMagal/weather-react-native](https://github.c
 ## Installation
 ### Android APK and iOS Simulator Preview Files
 - **iOS Simulator**:
-    - Double-click the iOS file in the `/build` directory.
+    - Double-click the iOS file in the `/builds` directory.
     - Drag the extracted file to the simulator.
 - **Android Device or Simulator**:
-    - Use the APK file from `/build`.
+    - Use the APK file from `/builds`.
     - Alternatively, download directly for your device [here](https://expo.dev/accounts/chaimagal/projects/weather-react-native/builds/9a0bdca0-bd85-4497-99d5-3df6b37899db). 
 
 ## Tools Used
