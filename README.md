@@ -9,7 +9,7 @@ Repository: [https://github.com/ChaiMagal/weather-react-native](https://github.c
     - Drag the extracted file to the simulator.
 - **Android Device or Simulator**:
     - Use the APK file from `/build`.
-    - Alternatively, download directly for your device [here](https://expo.dev/accounts/chaimagal/projects/weather-react-native/builds/4bec6b87-2f9d-4482-a4d9-6a8118ced7be). 
+    - Alternatively, download directly for your device [here](https://expo.dev/accounts/chaimagal/projects/weather-react-native/builds/9a0bdca0-bd85-4497-99d5-3df6b37899db). 
 
 ## Tools Used
 - Expo SDK47
