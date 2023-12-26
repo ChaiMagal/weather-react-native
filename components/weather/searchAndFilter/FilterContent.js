@@ -52,59 +52,54 @@ const FilterContent = ({ handleSort }) => {
 
   return (
     <>
-      <View style={styles.container}>
-        {renderApplyButton}
-        <Text variant={"titleLarge"} style={styles.title}>
-          {EN.weather.sort.title}
-        </Text>
+      {renderApplyButton}
+      <Text variant={"titleLarge"} style={styles.title}>
+        {EN.weather.sort.title}
+      </Text>
 
-        <Text variant={"labelSmall"}>{EN.weather.sort.alphabitically}</Text>
-        <View style={styles.sortName}>
-          <Chip
-            style={styles.chip}
-            onPress={() => handleSortAlphabetically(GENERAL.SORT.AZ)}
-            mode={alphabetic === GENERAL.SORT.AZ ? "flat" : "outlined"}
-          >
-            {GENERAL.SORT.AZ}
-          </Chip>
-          <Chip
-            style={styles.chip}
-            onPress={() => handleSortAlphabetically(GENERAL.SORT.ZA)}
-            mode={alphabetic === GENERAL.SORT.ZA ? "flat" : "outlined"}
-          >
-            {GENERAL.SORT.ZA}
-          </Chip>
-        </View>
-        <View>
-          <Text variant={"labelSmall"}>{EN.weather.sort.distance}</Text>
-          <ScrollView
-            style={styles.scrollContainer}
-            contentContainerStyle={styles.scroll}
-          >
-            {searchData?.map((obj) => {
-              const { Key, EnglishName } = obj;
-              return (
-                <Chip
-                  key={Key}
-                  style={styles.chip}
-                  onPress={() => handleSortDistance(EnglishName)}
-                  mode={distance === EnglishName ? "flat" : "outlined"}
-                >
-                  {EnglishName}
-                </Chip>
-              );
-            })}
-          </ScrollView>
-        </View>
+      <Text variant={"labelSmall"}>{EN.weather.sort.alphabitically}</Text>
+      <View style={styles.sortName}>
+        <Chip
+          style={styles.chip}
+          onPress={() => handleSortAlphabetically(GENERAL.SORT.AZ)}
+          mode={alphabetic === GENERAL.SORT.AZ ? "flat" : "outlined"}
+        >
+          {GENERAL.SORT.AZ}
+        </Chip>
+        <Chip
+          style={styles.chip}
+          onPress={() => handleSortAlphabetically(GENERAL.SORT.ZA)}
+          mode={alphabetic === GENERAL.SORT.ZA ? "flat" : "outlined"}
+        >
+          {GENERAL.SORT.ZA}
+        </Chip>
+      </View>
+      <View>
+        <Text variant={"labelSmall"}>{EN.weather.sort.distance}</Text>
+        <ScrollView
+          style={styles.scrollContainer}
+          contentContainerStyle={styles.scroll}
+        >
+          {searchData?.map((obj) => {
+            const { Key, EnglishName } = obj;
+            return (
+              <Chip
+                key={Key}
+                style={styles.chip}
+                onPress={() => handleSortDistance(EnglishName)}
+                mode={distance === EnglishName ? "flat" : "outlined"}
+              >
+                {EnglishName}
+              </Chip>
+            );
+          })}
+        </ScrollView>
       </View>
     </>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    paddingHorizontal: 16,
-  },
   sortName: {
     flexDirection: "row",
     paddingVertical: 8,

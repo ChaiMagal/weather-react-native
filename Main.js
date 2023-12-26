@@ -8,7 +8,6 @@ import { NavigationContainer } from "@react-navigation/native";
 import { IconComponentProvider } from "@react-native-material/core";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import MainTabNavigator from "./navigators/MainTabNavigator";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 const lightTheme = {
   ...MD3LightTheme,
@@ -38,11 +37,9 @@ const Main = () => {
       <StatusBar style={renderThemeStatusBar} />
       <PaperProvider theme={renderThemeApp}>
         <IconComponentProvider IconComponent={MaterialCommunityIcons}>
-          <GestureHandlerRootView style={{ flex: 1 }}>
-            <NavigationContainer theme={renderThemeApp}>
-              <MainTabNavigator />
-            </NavigationContainer>
-          </GestureHandlerRootView>
+          <NavigationContainer theme={renderThemeApp}>
+            <MainTabNavigator />
+          </NavigationContainer>
         </IconComponentProvider>
       </PaperProvider>
     </>

@@ -1,35 +1,25 @@
-import React, { useCallback, useRef, useState } from "react";
-import { IconButton } from "react-native-paper";
+import React, { useCallback, useState } from "react";
+import { Dialog, IconButton, Portal } from "react-native-paper";
 import FilterContent from "./FilterContent";
 import { ICONS } from "../../../utils/constants";
-import CustomBottomSheet from "../../common/CustomBottomSheet";
 
 const FilterButton = () => {
-  //BottomSheet
-  // ref
-  const bottomSheetRef = useRef(null);
   const [show, setShow] = useState(false);
-  const toggleBottomSheet = useCallback(() => {
-    setShow(true);
-  }, []);
-  // callbacks
-  const handleSheetChanges = useCallback((index) => {
-    if (index < 0) setShow(false);
-  }, []);
-  const handleSort = useCallback(() => {
-    bottomSheetRef.current?.close();
+  const toggleShow = useCallback(() => {
+    setShow((prev) => !prev);
   }, []);
 
   return (
     <>
-      <IconButton icon={ICONS.FILTER} onPress={toggleBottomSheet} />
+      <IconButton icon={ICONS.FILTER} onPress={toggleShow} />
       {show && (
-        <CustomBottomSheet
-          ref={bottomSheetRef}
-          handleSheetChanges={handleSheetChanges}
-        >
-          <FilterContent handleSort={handleSort} />
-        </CustomBottomSheet>
+        <Portal>
+          <Dialog visible={show} onDismiss={toggleShow}>
+            <Dialog.Content>
+              <FilterContent handleSort={toggleShow} />
+            </Dialog.Content>
+          </Dialog>
+        </Portal>
       )}
     </>
   );

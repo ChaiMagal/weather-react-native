@@ -37,7 +37,7 @@ const initialState = {
   },
 };
 
-export const localSlice = createSlice({
+export const weatherSlice = createSlice({
   name: "weather",
   initialState,
   reducers: {
@@ -118,6 +118,6 @@ export const localSlice = createSlice({
 });
 
 export const { setSearch, setCurrent, setSortAlphabetically, setSortDistance } =
-  localSlice.actions;
+  weatherSlice.actions;
 
-export default localSlice.reducer;
+export default weatherSlice.reducer;

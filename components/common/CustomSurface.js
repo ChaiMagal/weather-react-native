@@ -12,14 +12,7 @@ const CustomSurface = ({
   return (
     <Surface style={styles.surface} elevation={elevation} mode={mode}>
       {title && (
-        <View
-          style={{
-            paddingBottom: 16,
-            justifyContent: "center",
-            flexDirection: "column",
-            alignItems: "flex-start",
-          }}
-        >
+        <View style={styles.container}>
           <Text variant="labelSmall" style={{ fontWeight: "bold" }}>
             {title}
           </Text>
@@ -36,6 +29,12 @@ const styles = StyleSheet.create({
     margin: 16,
     padding: 16,
     borderRadius: 5,
+  },
+  container: {
+    paddingBottom: 16,
+    justifyContent: "center",
+    flexDirection: "column",
+    alignItems: "flex-start",
   },
 });
 

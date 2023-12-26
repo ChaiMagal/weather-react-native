@@ -1,6 +1,5 @@
 import React from "react";
-import { SafeAreaView, StyleSheet } from "react-native";
-import { StatusBar } from "expo-status-bar";
+import { SafeAreaView, StatusBar, StyleSheet } from "react-native";
 
 const CustomSafeAreaView = ({ children }) => {
   return <SafeAreaView style={styles.safeAreaView}>{children}</SafeAreaView>;
