@@ -76,16 +76,24 @@ export const sortZtoA = (data) => {
 };
 
 function calculateDistance(lat1, lon1, lat2, lon2) {
+  // The Haversine formula is used to calculate the great-circle distance between two points on a sphere given their longitudes and latitudes. This is important because the Earth is approximately spherical, so we can't use simple Euclidean distance.
   const R = 6371; // Radius of the Earth in km
+  // difference between latitudes, converted to radians. difference is multiplied by Math.PI / 180. This is because one degree is equivalent to π/180 radians.
   const dLat = ((lat2 - lat1) * Math.PI) / 180;
+  // difference between longitudes, converted to radians. difference is multiplied by Math.PI / 180. This is because one degree is equivalent to π/180 radians.
   const dLon = ((lon2 - lon1) * Math.PI) / 180;
+  // a is the square of half the chord length between the points
+  // calculates a value based on the sine and cosine of the latitudes and longitudes. This is part of the Haversine formula and accounts for the curvature of the Earth.
   const a =
     Math.sin(dLat / 2) * Math.sin(dLat / 2) +
     Math.cos((lat1 * Math.PI) / 180) *
       Math.cos((lat2 * Math.PI) / 180) *
       Math.sin(dLon / 2) *
       Math.sin(dLon / 2);
+  // c calculates the angular distance in radians between the two points.
+  // another part of the formula that computes the angular distance in radians.
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  // Arc Length = Radius × Central Angle
   return R * c; // Distance in km
 }
 
